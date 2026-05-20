@@ -1,0 +1,358 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Syne:wght@700;800&display=swap');
+
+  .ag-wrap { font-family: 'Space Grotesk', sans-serif; color: var(--color-text-primary); }
+
+  .ag-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.2rem 2rem;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    background: var(--color-background-primary);
+  }
+  .ag-logo { font-family: 'Syne', sans-serif; font-size: 20px; font-weight: 800; letter-spacing: -0.5px; }
+  .ag-logo span { color: #7F77DD; }
+  .ag-nav-links { display: flex; gap: 24px; font-size: 14px; color: var(--color-text-secondary); }
+  .ag-nav-links a { text-decoration: none; color: inherit; cursor: pointer; }
+  .ag-cta-btn { background: #7F77DD; color: #fff; border: none; border-radius: 8px; padding: 8px 18px; font-size: 14px; font-weight: 500; cursor: pointer; }
+
+  .ag-hero { background: var(--color-background-tertiary); padding: 5rem 2rem 4rem; text-align: center; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .ag-badge { display: inline-block; background: var(--color-background-info); color: var(--color-text-info); font-size: 12px; font-weight: 500; padding: 4px 14px; border-radius: 999px; margin-bottom: 1.5rem; border: 0.5px solid var(--color-border-tertiary); }
+  .ag-hero h1 { font-family: 'Syne', sans-serif; font-size: 48px; font-weight: 800; line-height: 1.1; margin: 0 auto 1.2rem; max-width: 680px; letter-spacing: -1.5px; }
+  .ag-hero h1 em { color: #7F77DD; font-style: normal; }
+  .ag-hero p { font-size: 17px; color: var(--color-text-secondary); max-width: 480px; margin: 0 auto; line-height: 1.6; }
+
+  .ag-section { padding: 3.5rem 2rem; border-bottom: 0.5px solid var(--color-border-tertiary); }
+  .ag-section-label { font-size: 12px; font-weight: 500; color: #7F77DD; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .ag-section h2 { font-family: 'Syne', sans-serif; font-size: 30px; font-weight: 800; margin: 0 0 0.5rem; letter-spacing: -0.5px; }
+  .ag-section-sub { font-size: 15px; color: var(--color-text-secondary); margin-bottom: 2rem; }
+
+  .ag-services { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+  .ag-service-card { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: 12px; padding: 1.25rem; }
+  .ag-service-icon { font-size: 24px; color: #7F77DD; margin-bottom: 0.75rem; }
+  .ag-service-title { font-size: 15px; font-weight: 500; margin-bottom: 4px; }
+  .ag-service-desc { font-size: 13px; color: var(--color-text-secondary); line-height: 1.5; }
+
+  .ag-process { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0; }
+  .ag-step { padding: 1.5rem; border-right: 0.5px solid var(--color-border-tertiary); }
+  .ag-step:last-child { border-right: none; }
+  .ag-step-num { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; color: var(--color-border-secondary); margin-bottom: 0.5rem; }
+  .ag-step-title { font-size: 14px; font-weight: 500; margin-bottom: 4px; }
+  .ag-step-desc { font-size: 12px; color: var(--color-text-secondary); line-height: 1.5; }
+
+  /* DEMO CHATBOT SECTION */
+  .ag-demo-section { padding: 3.5rem 2rem; border-bottom: 0.5px solid var(--color-border-tertiary); background: var(--color-background-tertiary); }
+  .ag-demo-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem; flex-wrap: wrap; margin-bottom: 2rem; }
+  .ag-demo-header-text { flex: 1; min-width: 200px; }
+  .ag-demo-badge { display: inline-flex; align-items: center; gap: 6px; background: #EEEDFE; color: #534AB7; font-size: 11px; font-weight: 500; padding: 4px 12px; border-radius: 999px; margin-bottom: 0.5rem; }
+  .ag-demo-header h2 { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; margin: 0 0 0.4rem; letter-spacing: -0.5px; }
+  .ag-demo-header p { font-size: 14px; color: var(--color-text-secondary); margin: 0; line-height: 1.5; }
+
+  .ag-chat-window {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: 16px;
+    overflow: hidden;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+  .ag-chat-header {
+    display: flex; align-items: center; gap: 10px;
+    padding: 1rem 1.25rem;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    background: var(--color-background-secondary);
+  }
+  .ag-chat-avatar {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: #7F77DD;
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-size: 16px;
+  }
+  .ag-chat-name { font-size: 14px; font-weight: 500; }
+  .ag-chat-status { font-size: 12px; color: var(--color-text-success); display: flex; align-items: center; gap: 4px; }
+  .ag-chat-status-dot { width: 6px; height: 6px; border-radius: 50%; background: #639922; }
+
+  .ag-chat-messages {
+    padding: 1.25rem;
+    display: flex; flex-direction: column; gap: 12px;
+    height: 300px; overflow-y: auto;
+  }
+  .ag-msg { display: flex; gap: 8px; align-items: flex-end; }
+  .ag-msg.user { flex-direction: row-reverse; }
+  .ag-msg-avatar { width: 26px; height: 26px; border-radius: 50%; background: var(--color-background-tertiary); border: 0.5px solid var(--color-border-tertiary); display: flex; align-items: center; justify-content: center; font-size: 12px; flex-shrink: 0; }
+  .ag-msg.user .ag-msg-avatar { background: #7F77DD; color: #fff; }
+  .ag-msg-bubble { max-width: 78%; padding: 10px 14px; border-radius: 16px; font-size: 13px; line-height: 1.5; }
+  .ag-msg.bot .ag-msg-bubble { background: var(--color-background-secondary); border: 0.5px solid var(--color-border-tertiary); border-bottom-left-radius: 4px; color: var(--color-text-primary); }
+  .ag-msg.user .ag-msg-bubble { background: #7F77DD; color: #fff; border-bottom-right-radius: 4px; }
+  .ag-msg-typing { display: flex; gap: 4px; align-items: center; padding: 10px 14px; }
+  .ag-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--color-text-secondary); animation: bounce 1.2s infinite; }
+  .ag-dot:nth-child(2) { animation-delay: 0.2s; }
+  .ag-dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce { 0%,60%,100%{transform:translateY(0)} 30%{transform:translateY(-5px)} }
+
+  .ag-chat-input-row {
+    display: flex; gap: 8px; align-items: center;
+    padding: 0.75rem 1rem;
+    border-top: 0.5px solid var(--color-border-tertiary);
+  }
+  .ag-chat-input {
+    flex: 1; border: 0.5px solid var(--color-border-secondary);
+    border-radius: 8px; padding: 8px 12px; font-size: 13px;
+    background: var(--color-background-secondary);
+    color: var(--color-text-primary);
+    font-family: 'Space Grotesk', sans-serif;
+    outline: none;
+  }
+  .ag-chat-send {
+    background: #7F77DD; color: #fff; border: none;
+    border-radius: 8px; width: 34px; height: 34px;
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer; font-size: 15px; flex-shrink: 0;
+  }
+  .ag-chat-send:disabled { opacity: 0.5; cursor: default; }
+
+  .ag-demo-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 1rem; max-width: 560px; margin-left: auto; margin-right: auto; }
+  .ag-chip { background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); border-radius: 999px; padding: 6px 14px; font-size: 12px; cursor: pointer; color: var(--color-text-secondary); }
+  .ag-chip:hover { border-color: #7F77DD; color: #7F77DD; }
+
+  /* CONTACT */
+  .ag-contact { padding: 3.5rem 2rem; background: var(--color-background-tertiary); text-align: center; }
+  .ag-contact h2 { font-family: 'Syne', sans-serif; font-size: 28px; font-weight: 800; margin-bottom: 0.5rem; letter-spacing: -0.5px; }
+  .ag-contact p { color: var(--color-text-secondary); font-size: 15px; margin-bottom: 1.5rem; }
+  .ag-contact-form { display: flex; flex-direction: column; gap: 10px; max-width: 400px; margin: 0 auto; }
+  .ag-contact-form input, .ag-contact-form textarea { width: 100%; box-sizing: border-box; border-radius: 8px; padding: 10px 14px; font-size: 14px; background: var(--color-background-primary); border: 0.5px solid var(--color-border-secondary); color: var(--color-text-primary); font-family: 'Space Grotesk', sans-serif; }
+  .ag-contact-form textarea { height: 90px; resize: none; }
+  .ag-submit { background: #7F77DD; color: #fff; border: none; border-radius: 8px; padding: 12px; font-size: 15px; font-weight: 500; cursor: pointer; width: 100%; }
+
+  .ag-footer { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 2rem; border-top: 0.5px solid var(--color-border-tertiary); font-size: 13px; color: var(--color-text-secondary); }
+</style>
+
+<div class="ag-wrap">
+
+  <nav class="ag-nav">
+    <div class="ag-logo">Nexu<span>ra</span></div>
+    <div class="ag-nav-links">
+      <a>Servicios</a>
+      <a>Proceso</a>
+      <a>Contacto</a>
+    </div>
+    <button class="ag-cta-btn">Hablar con nosotros</button>
+  </nav>
+
+  <section class="ag-hero">
+    <div class="ag-badge"><i class="ti ti-bolt" aria-hidden="true"></i> Agencia digital especializada</div>
+    <h1>Tu negocio online, <em>sin complicaciones</em></h1>
+    <p>Creamos páginas web profesionales y automatizamos tus procesos. Citas, reservas, formularios — todo funcionando solo.</p>
+  </section>
+
+  <section class="ag-section">
+    <div class="ag-section-label">Servicios</div>
+    <h2>Todo lo que necesitas</h2>
+    <p class="ag-section-sub">Desde el diseño hasta la automatización, lo hacemos por ti.</p>
+    <div class="ag-services">
+      <div class="ag-service-card">
+        <div class="ag-service-icon"><i class="ti ti-layout-2" aria-hidden="true"></i></div>
+        <div class="ag-service-title">Páginas web</div>
+        <div class="ag-service-desc">Diseño profesional y adaptado a móvil para cualquier tipo de negocio.</div>
+      </div>
+      <div class="ag-service-card">
+        <div class="ag-service-icon"><i class="ti ti-calendar-check" aria-hidden="true"></i></div>
+        <div class="ag-service-title">Sistema de citas</div>
+        <div class="ag-service-desc">Tus clientes reservan 24/7 sin que tengas que mover un dedo.</div>
+      </div>
+      <div class="ag-service-card">
+        <div class="ag-service-icon"><i class="ti ti-settings-automation" aria-hidden="true"></i></div>
+        <div class="ag-service-title">Automatizaciones</div>
+        <div class="ag-service-desc">Emails automáticos, recordatorios, formularios conectados a tu flujo.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ag-section" style="padding-bottom: 0;">
+    <div class="ag-section-label">Proceso</div>
+    <h2>Así trabajamos</h2>
+    <p class="ag-section-sub">Simple, rápido y sin sorpresas.</p>
+    <div class="ag-process" style="border-radius: var(--border-radius-lg); overflow: hidden; border: 0.5px solid var(--color-border-tertiary);">
+      <div class="ag-step">
+        <div class="ag-step-num">01</div>
+        <div class="ag-step-title">Reunión inicial</div>
+        <div class="ag-step-desc">Entendemos tu negocio y lo que necesitas en 30 minutos.</div>
+      </div>
+      <div class="ag-step">
+        <div class="ag-step-num">02</div>
+        <div class="ag-step-title">Propuesta</div>
+        <div class="ag-step-desc">Te enviamos diseño y presupuesto en 48 horas.</div>
+      </div>
+      <div class="ag-step">
+        <div class="ag-step-num">03</div>
+        <div class="ag-step-title">Desarrollo</div>
+        <div class="ag-step-desc">Construimos tu web con revisiones incluidas.</div>
+      </div>
+      <div class="ag-step">
+        <div class="ag-step-num">04</div>
+        <div class="ag-step-title">Lanzamiento</div>
+        <div class="ag-step-desc">Tu web en vivo y funcionando, con soporte incluido.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DEMO CHATBOT -->
+  <section class="ag-demo-section">
+    <div class="ag-demo-header">
+      <div class="ag-demo-header-text">
+        <div class="ag-demo-badge"><i class="ti ti-sparkles" aria-hidden="true"></i> Demo en vivo</div>
+        <h2>Prueba cómo funciona un chatbot</h2>
+        <p>Así de fácil pueden atender a tus clientes 24/7. Este asistente está configurado como si fuera de un negocio real — imagina el tuyo.</p>
+      </div>
+    </div>
+
+    <div class="ag-chat-window">
+      <div class="ag-chat-header">
+        <div class="ag-chat-avatar"><i class="ti ti-robot" aria-hidden="true"></i></div>
+        <div>
+          <div class="ag-chat-name">Asistente virtual · Demo Nexura</div>
+          <div class="ag-chat-status"><span class="ag-chat-status-dot"></span> En línea ahora</div>
+        </div>
+      </div>
+      <div class="ag-chat-messages" id="chatMessages">
+        <div class="ag-msg bot">
+          <div class="ag-msg-avatar"><i class="ti ti-robot" style="font-size:12px;" aria-hidden="true"></i></div>
+          <div class="ag-msg-bubble">¡Hola! 👋 Soy el asistente virtual de demostración de Nexura. Puedo responder preguntas, gestionar citas o ayudar a tus clientes. ¿En qué puedo ayudarte hoy?</div>
+        </div>
+      </div>
+      <div class="ag-chat-input-row">
+        <input class="ag-chat-input" id="chatInput" type="text" placeholder="Escribe tu mensaje..." />
+        <button class="ag-chat-send" id="chatSend"><i class="ti ti-send" aria-hidden="true"></i></button>
+      </div>
+    </div>
+
+    <div class="ag-demo-chips" id="chipContainer">
+      <span class="ag-chip" onclick="sendChip(this)">¿Qué puedes hacer?</span>
+      <span class="ag-chip" onclick="sendChip(this)">Quiero pedir cita</span>
+      <span class="ag-chip" onclick="sendChip(this)">¿Cuál es el horario?</span>
+      <span class="ag-chip" onclick="sendChip(this)">¿Cómo funciona esto?</span>
+    </div>
+  </section>
+
+  <section class="ag-contact">
+    <h2>¿Empezamos?</h2>
+    <p>Cuéntanos tu proyecto y te respondemos en menos de 24 horas.</p>
+    <div class="ag-contact-form">
+      <input type="text" placeholder="Tu nombre" />
+      <input type="email" placeholder="Tu email" />
+      <input type="text" placeholder="¿En qué podemos ayudarte?" />
+      <textarea placeholder="Cuéntanos un poco más sobre tu negocio..."></textarea>
+      <button class="ag-submit">Enviar mensaje <i class="ti ti-send" aria-hidden="true"></i></button>
+    </div>
+  </section>
+
+  <footer class="ag-footer">
+    <div class="ag-logo" style="font-size:15px;">Nexu<span style="color:#7F77DD;">ra</span></div>
+    <div>© 2026 Nexura. Todos los derechos reservados.</div>
+    <div style="display:flex; gap:16px;">
+      <i class="ti ti-brand-instagram" style="font-size:18px; cursor:pointer;" aria-label="Instagram"></i>
+      <i class="ti ti-brand-linkedin" style="font-size:18px; cursor:pointer;" aria-label="LinkedIn"></i>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  const SYSTEM_PROMPT = `Eres el asistente virtual de demostración de Nexura, una agencia digital que crea páginas web y automatiza procesos como citas para negocios. 
+Tu objetivo es demostrar cómo funcionaría un chatbot instalado en el negocio de un cliente.
+Actúa como si fueras el asistente de un negocio genérico pero profesional. Puedes ayudar con:
+- Información sobre servicios
+- Gestión de citas (simúlala de forma realista)
+- Preguntas frecuentes
+- Horarios y contacto
+Sé amable, conciso y natural. Responde siempre en español. Máximo 3 frases por respuesta. No menciones que eres Claude ni que usas IA de Anthropic.`;
+
+  let history = [];
+  let isLoading = false;
+
+  const messagesEl = document.getElementById('chatMessages');
+  const inputEl = document.getElementById('chatInput');
+  const sendBtn = document.getElementById('chatSend');
+
+  function scrollDown() {
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  function addMessage(role, text) {
+    const isUser = role === 'user';
+    const div = document.createElement('div');
+    div.className = 'ag-msg ' + (isUser ? 'user' : 'bot');
+    div.innerHTML = `
+      <div class="ag-msg-avatar">
+        <i class="ti ${isUser ? 'ti-user' : 'ti-robot'}" style="font-size:12px;" aria-hidden="true"></i>
+      </div>
+      <div class="ag-msg-bubble">${text}</div>
+    `;
+    messagesEl.appendChild(div);
+    scrollDown();
+    return div;
+  }
+
+  function showTyping() {
+    const div = document.createElement('div');
+    div.className = 'ag-msg bot';
+    div.id = 'typing-indicator';
+    div.innerHTML = `
+      <div class="ag-msg-avatar"><i class="ti ti-robot" style="font-size:12px;" aria-hidden="true"></i></div>
+      <div class="ag-msg-bubble ag-msg-typing">
+        <div class="ag-dot"></div><div class="ag-dot"></div><div class="ag-dot"></div>
+      </div>
+    `;
+    messagesEl.appendChild(div);
+    scrollDown();
+  }
+
+  function removeTyping() {
+    const el = document.getElementById('typing-indicator');
+    if (el) el.remove();
+  }
+
+  async function sendMessage(text) {
+    if (!text.trim() || isLoading) return;
+    isLoading = true;
+    sendBtn.disabled = true;
+    inputEl.value = '';
+
+    addMessage('user', text);
+    history.push({ role: 'user', content: text });
+    showTyping();
+
+    try {
+      const res = await fetch('https://api.anthropic.com/v1/messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          model: 'claude-sonnet-4-20250514',
+          max_tokens: 1000,
+          system: SYSTEM_PROMPT,
+          messages: history
+        })
+      });
+      const data = await res.json();
+      const reply = data.content.map(b => b.text || '').join('');
+      removeTyping();
+      addMessage('bot', reply);
+      history.push({ role: 'assistant', content: reply });
+    } catch(e) {
+      removeTyping();
+      addMessage('bot', 'Lo siento, ha habido un problema. Por favor inténtalo de nuevo.');
+    }
+
+    isLoading = false;
+    sendBtn.disabled = false;
+    inputEl.focus();
+  }
+
+  function sendChip(el) {
+    sendMessage(el.textContent);
+    document.getElementById('chipContainer').style.display = 'none';
+  }
+
+  sendBtn.addEventListener('click', () => sendMessage(inputEl.value));
+  inputEl.addEventListener('keydown', e => { if (e.key === 'Enter') sendMessage(inputEl.value); });
+</script>
